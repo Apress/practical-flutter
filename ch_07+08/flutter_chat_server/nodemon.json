@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "noColors": true,
+  "events": {
+    "start": "cls || clear"
+  }
+}

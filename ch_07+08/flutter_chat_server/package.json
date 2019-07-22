@@ -1,0 +1,17 @@
+{
+    "name": "flutter_chat_server",
+    "version": "1.0.0",
+    "description": "The server side of FlutterChat",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Frank W. Zammetti",
+    "license": "ISC",
+    "dependencies": {
+        "socket.io": "2.2.0"
+    },
+    "devDependencies": {
+        "eslint": "^5.15.3"
+    }
+}

@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <title>Tester for FlutterChat server</title>
+
+    <style>
+      div {
+        padding-top : 20px;
+        padding-bottom : 20px;
+        border-bottom : 2px solid #000000;
+      }
+    </style>
+
+    <!--suppress JSUnresolvedLibraryURL -->
+    <script src="http://192.168.1.32/socket.io/socket.io.js"></script>
+    <script src="test.js"></script>
+
+  </head>
+  <body onLoad="connect();">
+    <div><input type="button" value="validate" onClick="validate();"></div>
+    <div><input type="button" value="listUsers" onClick="listUsers();"></div>
+    <div><input type="button" value="create" onClick="create();"></div>
+    <div><input type="button" value="listRooms" onClick="listRooms();"></div>
+    <div><input type="button" value="join" onClick="join();"></div>
+    <div><input type="button" value="leave" onClick="leave();"></div>
+    <div><input type="button" value="kick" onClick="kick();"></div>
+    <div><input type="button" value="post" onClick="postMsg();"></div>
+    <div><input type="button" value="close" onClick="closeRoom();"></div>
+    <div><input type="button" value="invite" onClick="invite();"></div>
+  </body>
+</html>

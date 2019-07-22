@@ -1,0 +1,1 @@
+nodemon --no-colors
