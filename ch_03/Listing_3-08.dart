@@ -8,11 +8,6 @@ class MyApp extends StatefulWidget {
   _MyApp createState() => _MyApp();
 }
 
-class LoginData {
-  String username = "";
-  String password = "";
-}
-
 class _MyApp extends State {
 
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
