@@ -44,8 +44,10 @@ class NotesEntry extends StatelessWidget {
     print("## NotesEntry.build()");
 
     // Set value of controllers.
-    _titleEditingController.text = notesModel.entityBeingEdited.title;
-    _contentEditingController.text = notesModel.entityBeingEdited.content;
+    if (notesModel.entityBeingEdited != null) {
+      _titleEditingController.text = notesModel.entityBeingEdited.title;
+      _contentEditingController.text = notesModel.entityBeingEdited.content;
+    }
 
     // Return widget.
     return ScopedModel(
