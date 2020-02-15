@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:flutter_slidable/flutter_slidable.dart';
 import "package:scoped_model/scoped_model.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
 import "package:intl/intl.dart";
 import "package:flutter_calendar_carousel/flutter_calendar_carousel.dart";
 import "package:flutter_calendar_carousel/classes/event.dart";
@@ -136,7 +136,7 @@ class AppointmentsList extends StatelessWidget {
                                 }
                                 // Return a widget for the appointment since it's for the correct date.
                                 return Slidable(
-                                  actionPane: SlidableDrawerActionPane(),
+                                  delegate : SlidableDrawerDelegate(),
                                   actionExtentRatio : .25,
                                   child : Container(
                                   margin : EdgeInsets.only(bottom : 8),

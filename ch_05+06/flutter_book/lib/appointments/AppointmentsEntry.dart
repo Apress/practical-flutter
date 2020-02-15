@@ -46,10 +46,8 @@ class AppointmentsEntry extends StatelessWidget {
     print("## AppointmentsEntry.build()");
 
     // Set value of controllers.
-    if (appointmentsModel.entityBeingEdited != null) {
-      _titleEditingController.text = appointmentsModel.entityBeingEdited.title;
-      _descriptionEditingController.text = appointmentsModel.entityBeingEdited.description;
-    }
+    _titleEditingController.text = appointmentsModel.entityBeingEdited.title;
+    _descriptionEditingController.text = appointmentsModel.entityBeingEdited.description;
 
     // Return widget.
     return ScopedModel(
