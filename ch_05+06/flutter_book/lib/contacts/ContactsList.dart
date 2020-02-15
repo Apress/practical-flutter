@@ -54,7 +54,7 @@ class ContactsList extends StatelessWidget {
                 return Column(
                   children : [
                     Slidable(
-                      delegate : SlidableDrawerDelegate(),
+                      actionPane: SlidableDrawerActionPane(),
                       actionExtentRatio : .25,
                       child : ListTile(
                         leading : CircleAvatar(

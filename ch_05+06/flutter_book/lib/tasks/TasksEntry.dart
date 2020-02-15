@@ -41,9 +41,7 @@ class TasksEntry extends StatelessWidget {
     print("## TasksEntry.build()");
 
     // Set value of controllers.
-    if (tasksModel.entityBeingEdited != null) {
-      _descriptionEditingController.text = tasksModel.entityBeingEdited.description;
-    }
+    _descriptionEditingController.text = tasksModel.entityBeingEdited.description;
 
     // Return widget.
     return ScopedModel(

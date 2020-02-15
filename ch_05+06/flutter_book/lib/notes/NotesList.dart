@@ -51,7 +51,7 @@ class NotesList extends StatelessWidget {
                 return Container(
                   padding : EdgeInsets.fromLTRB(20, 20, 20, 0),
                   child : Slidable(
-                    delegate : SlidableDrawerDelegate(),
+                    actionPane: SlidableDrawerActionPane(),
                     actionExtentRatio : .25,
                     secondaryActions : [
                       IconSlideAction(
