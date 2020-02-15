@@ -52,7 +52,7 @@ class TasksList extends StatelessWidget {
                 }
                 // Create the Slidable.
                 return Slidable(
-                  delegate : SlidableDrawerDelegate(),
+                  actionPane: SlidableDrawerActionPane(),
                   actionExtentRatio : .25,
                   child : ListTile(
                     leading : Checkbox(

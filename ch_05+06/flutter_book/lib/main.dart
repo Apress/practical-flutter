@@ -11,6 +11,8 @@ import "utils.dart" as utils;
 /// Start it up!
 void main() {
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   print("## main(): FlutterBook Starting");
 
   startMeUp() async {
