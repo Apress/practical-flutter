@@ -10,13 +10,13 @@ description: flutter_chat
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_socket_io: 0.4.6
-  path_provider: 0.5.0+1
+  flutter_socket_io: 0.6.0
+  path_provider: 1.6.0
   scoped_model: 1.0.1
 
   # The following adds the Cupertino Icons font to your application.

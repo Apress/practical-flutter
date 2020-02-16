@@ -6,13 +6,16 @@ import "Model.dart" show FlutterChatModel, model;
 import "Connector.dart" as connector;
 
 
+// Key of the login form.  Note it has to be static final so that it doesn't get recreated multiple times
+// to avoid the keyboard popping up and disappearing (see here: https://github.com/flutter/flutter/issues/20042).
+// Note that this was moved from inside the build() method after book publication to address an issue that
+// occurred when a newer Flutter SDK was used.
+final GlobalKey<FormState> _loginFormKey = new GlobalKey<FormState>();
+
+
 // ignore: must_be_immutable
 class LoginDialog extends StatelessWidget {
 
-
-  // Key of the login form.  Note it has to be static final so that it doesn't get recreated multiple times
-  // to avoid the keyboard popping up and disappearing (see here: https://github.com/flutter/flutter/issues/20042).
-  static final GlobalKey<FormState> _loginFormKey = new GlobalKey<FormState>();
 
   // UserName that the user enters.
   String _userName;

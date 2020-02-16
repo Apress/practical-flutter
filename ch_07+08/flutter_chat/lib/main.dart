@@ -12,7 +12,17 @@ import "UserList.dart";
 import "CreateRoom.dart";
 
 
+// Note that these were moved from inside the main()-startMeUp() method after book publication to address an issue that
+// occurred when a newer Flutter SDK was used.
+var credentials;
+var exists;
+
+
 void main() {
+
+  // Note that this was added after book publication to address an issue that occurred when a newer Flutter SDK was
+  // used.
+  WidgetsFlutterBinding.ensureInitialized();
 
   print("## main(): FlutterChat starting");
 
@@ -26,10 +36,9 @@ void main() {
 
     // See if the credentials file exists.
     var credentialsFile = File(join(model.docsDir.path, "credentials"));
-    var exists = await credentialsFile.exists();
+    exists = await credentialsFile.exists();
 
     // If it does exist the read it in.
-    var credentials;
     if (exists) {
       credentials = await credentialsFile.readAsString();
       print("## main(): credentials = $credentials");
@@ -37,31 +46,6 @@ void main() {
 
     // Build the initial UI.
     runApp(FlutterChat());
-
-    // If the credential file exists then call the server to validate the user.  Note that there's an edge case where
-    // if a user registers, then the server restarts, and ANOTHER user registers with this one's userName, and then
-    // this user tries to validate, it will fail because the password (presumably!) won't match.  In that case,
-    // the code in validateWithStoredCredentials() will delete the credentials file and alert the user to this
-    // situation.  Upon app restart, they'll be prompted for new credentials.
-    if (exists) {
-
-      print("## main(): Credential file exists, calling server with stored credentials");
-
-      List credParts = credentials.split("============");
-      LoginDialog().validateWithStoredCredentials(credParts[0], credParts[1]);
-
-    // If it DOESN'T exist then show the login dialog.
-    } else {
-
-      print("## main(): Credential file does NOT exist, prompting for credentials");
-
-      await showDialog(context : model.rootBuildContext, barrierDismissible : false,
-        builder : (BuildContext inDialogContext) {
-          return LoginDialog();
-        }
-      );
-
-    }
 
   } /* End startMeUp(). */
 
@@ -97,6 +81,9 @@ class FlutterChatMain extends StatelessWidget {
     // Store off the context so we can launch the login dialog if needed.
     model.rootBuildContext = inContext;
 
+    // Note that this added after book publication to address an issue that occurred when a newer Flutter SDK was used.
+    WidgetsBinding.instance.addPostFrameCallback((_) => executeAfterBuild());
+
     return ScopedModel<FlutterChatModel>(model : model, child : ScopedModelDescendant<FlutterChatModel>(
       builder : (BuildContext inContext, Widget inChild, FlutterChatModel inModel) {
         return MaterialApp(initialRoute : "/",
@@ -112,6 +99,39 @@ class FlutterChatMain extends StatelessWidget {
     ));
 
   } /* End build(). */
+
+
+  // If the credential file exists then call the server to validate the user.  Note that there's an edge case where
+  // if a user registers, then the server restarts, and ANOTHER user registers with this one's userName, and then
+  // this user tries to validate, it will fail because the password (presumably!) won't match.  In that case,
+  // the code in validateWithStoredCredentials() will delete the credentials file and alert the user to this
+  // situation.  Upon app restart, they'll be prompted for new credentials.
+  // Note that this was moved from inside the main()->startMeUp() method after book publication to address an issue
+  // that occurred when a newer Flutter SDK was used.  This also introduces the addPostFrameCallback() technique
+  // to have this code execute after build() completes, which originally wasn't necessary.
+  Future<void> executeAfterBuild() async {
+
+    if (exists) {
+
+      print("## main(): Credential file exists, calling server with stored credentials");
+
+      List credParts = credentials.split("============");
+      LoginDialog().validateWithStoredCredentials(credParts[0], credParts[1]);
+
+    // If it DOESN'T exist then show the login dialog.
+    } else {
+
+      print("## main(): Credential file does NOT exist, prompting for credentials");
+
+      await showDialog(context : model.rootBuildContext, barrierDismissible : false,
+        builder : (BuildContext inDialogContext) {
+          return LoginDialog();
+        }
+      );
+
+    }
+
+  } /* executeAfterBuild(). */
 
 
 } /* End class. */
