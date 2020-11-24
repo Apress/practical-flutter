@@ -5,7 +5,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home : Scaffold(body : Home()));
+    return MaterialApp(home : Home());
   }
 }
 
@@ -32,19 +32,19 @@ class Home extends StatelessWidget  {
   @override
   Widget build(BuildContext inContext) {
     return Scaffold(
-      body : Column(
-        children : [
-          Container(height : 50),
+      body: Column(
+        children: [
+          Container(height: 50),
           RaisedButton(
-            child : Text("Test DatePicker"),
-            onPressed : () => _selectDate(inContext)
+            child: Text("Test DatePicker"),
+            onPressed: () => _selectDate(inContext),
           ),
           RaisedButton(
-            child : Text("Test TimePicker"),
-            onPressed : () => _selectTime(inContext)
-          )
-        ]
-      )
+            child: Text("Test TimePicker"),
+            onPressed: () => _selectTime(inContext),
+          ),
+        ],
+      ),
     );
   }
 
