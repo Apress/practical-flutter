@@ -9,7 +9,7 @@
     "author": "Frank W. Zammetti",
     "license": "ISC",
     "dependencies": {
-        "socket.io": "2.2.0"
+        "socket.io": "2.5.0"
     },
     "devDependencies": {
         "eslint": "^5.15.3"
